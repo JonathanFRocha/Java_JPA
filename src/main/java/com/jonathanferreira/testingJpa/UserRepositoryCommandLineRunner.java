@@ -20,7 +20,15 @@ public class UserRepositoryCommandLineRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         User user = new User("Jonathan Ferreira Interface", "Admin");
+
         var insertedUser = userRepository.save(user);
         log.info("new user was created: " + insertedUser );
+
+        var optionalUser = userRepository.findById(2L);
+        log.info("user was retrieved: " + optionalUser );
+
+        var users = userRepository.findAll();
+        log.info("users retrieved: " + users );
+
     }
 }
